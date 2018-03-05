@@ -1,0 +1,21 @@
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	smartlog = log --graph --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'
+	sl = log --branches --tags --graph --oneline --decorate 
+	reb = rebase
+	# git reb-one <source-branch> <destination-branch>
+	# Assuming <source-branch> has a single commit
+	reb-one = "!f() { git rebase $1^ $1 --onto $2; }; f"
+	cur-br = rev-parse --abbrev-ref HEAD
+	reb-this = "!f() { git reb-one $(git cur-br) $1; }; f"
+	amend = commit --amend --no-edit
+	dr = diff HEAD^
+	str = diff HEAD^ --name-status
+[user]
+	email = krig@krig
+	name = Krig 
+[push]
+	default = simple
